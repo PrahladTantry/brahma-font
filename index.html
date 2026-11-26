@@ -4,116 +4,56 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="data:,">
-<title>Brahma — Shirorekha Brahmi font tester</title>
-<meta name="description" content="Type in Devanagari and see it set in Brahma, a Brahmi font where conjuncts are joined by a headline bar.">
+<title>Brahma</title>
 <style>
-@font-face{
-  font-family:"Brahma";
-  src:url("Brahma-Regular.woff2") format("woff2"),
-      url("Brahma-Regular.ttf") format("truetype");
-  font-display:swap;
-}
-:root{
-  --bg:#faf8f4; --card:#fff; --ink:#1b1a17; --mute:#6b675e; --line:#e4dfd4; --accent:#8a3b12; --accent-2:#f3e3d3;
-}
-@media (prefers-color-scheme:dark){
-  :root{--bg:#161512; --card:#1f1d19; --ink:#f1ede4; --mute:#a39d90; --line:#34312a; --accent:#e8a36c; --accent-2:#2c2620;}
-}
+@font-face{font-family:"Brahma";src:url("Brahma-Regular.woff2") format("woff2"),url("Brahma-Regular.ttf") format("truetype");font-display:swap}
+:root{--bg:#faf8f4;--card:#fff;--ink:#1b1a17;--mute:#6b675e;--line:#e4dfd4;--accent:#8a3b12}
+@media (prefers-color-scheme:dark){:root{--bg:#161512;--card:#1f1d19;--ink:#f1ede4;--mute:#a39d90;--line:#34312a;--accent:#e8a36c}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans Devanagari",sans-serif}
-.wrap{max-width:980px;margin:0 auto;padding:28px 18px 60px}
-header h1{margin:0;font-size:30px;letter-spacing:-.01em}
-header p{margin:6px 0 0;color:var(--mute)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:18px}
-.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.tabs{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
-.tabs button{border:0;background:transparent;color:var(--ink);padding:8px 14px;font:inherit;cursor:pointer}
-.tabs button[aria-pressed="true"]{background:var(--accent);color:#fff}
-label.small{font-size:13px;color:var(--mute)}
-textarea{width:100%;min-height:110px;resize:vertical;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);padding:12px;font:22px/1.6 "Noto Sans Devanagari","Nirmala UI","Mangal",system-ui,sans-serif}
-textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
-.out{font-family:"Brahma","Noto Sans Brahmi","Segoe UI Historic",serif;font-size:64px;line-height:normal;min-height:160px;word-break:break-word;white-space:pre-wrap;padding:10px 4px;overflow-wrap:anywhere}
-.chip,.key,.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:9px;padding:6px 11px;font:inherit;cursor:pointer}
-.chip:hover,.key:hover,.btn:hover{border-color:var(--accent)}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-.keys{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.key{min-width:38px;padding:5px 8px;font:20px "Noto Sans Devanagari","Nirmala UI","Mangal",system-ui,sans-serif;text-align:center}
-.key.wide{padding:5px 14px;font:14px system-ui}
-h2{font-size:17px;margin:0 0 4px}
-.hint{color:var(--mute);font-size:13px;margin:2px 0 0}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:10px;margin-top:12px}
-.cell{border:1px solid var(--line);border-radius:10px;padding:8px;text-align:center;background:var(--bg)}
-.cell .b{font-family:"Brahma","Noto Sans Brahmi",serif;font-size:44px;line-height:1.7}
-.cell .d{font-size:14px;color:var(--mute)}
-select{font:inherit;padding:6px 10px;border:1px solid var(--line);border-radius:9px;background:var(--card);color:var(--ink)}
-input[type=range]{accent-color:var(--accent)}
-footer{margin-top:28px;color:var(--mute);font-size:13px}
-a{color:var(--accent)}
-.note{background:var(--accent-2);border-radius:10px;padding:9px 12px;font-size:13.5px;margin-top:12px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:10px}
+.bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.bar .grow{flex:1}
+button,select{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:9px;padding:6px 11px;cursor:pointer}
+button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+input[type=range]{accent-color:var(--accent);width:110px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:stretch}
+.pane{background:var(--card);border:1px solid var(--line);border-radius:12px;min-height:calc(100vh - 120px);min-height:calc(100dvh - 120px)}
+textarea{display:block;width:100%;height:100%;min-height:inherit;resize:none;border:0;border-radius:12px;background:transparent;color:var(--ink);padding:10px;font:20px/1.5 "Noto Sans Devanagari","Nirmala UI","Mangal",system-ui,sans-serif}
+textarea:focus{outline:2px solid var(--accent);outline-offset:-2px}
+.out{padding:10px;font-family:"Brahma","Noto Sans Brahmi","Segoe UI Historic",serif;font-size:44px;line-height:normal;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word}
+.out .w{display:inline-block;white-space:pre}
+.out .l{display:block;min-height:1em}
+details{margin-top:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 10px}
+summary{cursor:pointer;color:var(--mute)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:6px;margin-top:10px}
+.cell{border:1px solid var(--line);border-radius:9px;padding:4px;text-align:center}
+.cell .b{font-family:"Brahma","Noto Sans Brahmi",serif;font-size:34px;line-height:normal;padding:6px 0 18px}
+.cell .d{font-size:12px;color:var(--mute)}
+@media (max-width:560px){.cols{gap:6px}.wrap{padding:6px}textarea{font-size:17px;padding:8px}.out{padding:8px}input[type=range]{width:80px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<header>
-  <h1>Brahma</h1>
-  <p>A Brahmi font in which conjuncts are drawn with a continuous headline bar. Type in Devanagari below and read it back in Brahmi.</p>
-</header>
-
-<section class="card">
-  <div class="row" style="justify-content:space-between">
-    <div class="tabs" role="group" aria-label="Input mode">
-      <button id="m-dev" aria-pressed="true">Devanagari → Brahmi</button>
-      <button id="m-brh" aria-pressed="false">Type Brahmi directly</button>
-    </div>
-    <div class="row">
-      <label class="small" for="size">Size</label>
-      <input id="size" type="range" min="24" max="160" value="64">
-      <button class="btn" id="copy">Copy Brahmi</button>
-      <button class="btn" id="clear">Clear</button>
-    </div>
+  <div class="bar">
+    <button id="m-dev" aria-pressed="true">Deva → Brahmi</button>
+    <button id="m-brh" aria-pressed="false">Brahmi</button>
+    <span class="grow"></span>
+    <input id="size" type="range" min="20" max="120" value="44" aria-label="Size">
+    <button id="copy">Copy</button>
+    <button id="clear">Clear</button>
   </div>
-
-  <textarea id="inp" spellcheck="false" placeholder="यहाँ देवनागरी में लिखें…  (for example: संस्कृत, कृष्ण, अस्त्र)">अस्त धर्म कृष्ण संस्कृत</textarea>
-
-  <div class="chips" id="samples"></div>
-  <p class="sub" style="margin:14px 0 0;font-size:13px;opacity:.75">Brahmi test set (65 lines: dead consonants, conjuncts, vowel signs, mixed words)</p>
-  <div class="chips" id="tests"></div>
-
-  <details style="margin-top:12px">
-    <summary>On-screen Devanagari keyboard</summary>
-    <div class="hint">For when your device has no Devanagari keyboard. Click a key to insert it.</div>
-    <div class="keys" id="kb"></div>
+  <div class="cols">
+    <div class="pane"><textarea id="inp" spellcheck="false" placeholder="देवनागरी…">प्र क्र त्र्य कृष्ण संस्कृत</textarea></div>
+    <div class="pane"><div class="out" id="out" aria-live="polite"></div></div>
+  </div>
+  <details>
+    <summary>Conjuncts</summary>
+    <div style="margin-top:8px"><select id="first" aria-label="First consonant"></select></div>
+    <div class="grid" id="conj"></div>
   </details>
-</section>
-
-<section class="card">
-  <h2>Brahmi</h2>
-  <div class="out" id="out" aria-live="polite"></div>
-</section>
-
-<section class="card">
-  <h2>Conjunct explorer</h2>
-  <div class="hint">Pick a first consonant to see it joined to every other consonant (consonant + virama + consonant), plus its dead form.</div>
-  <div class="row" style="margin-top:10px">
-    <label class="small" for="first">First consonant</label>
-    <select id="first"></select>
-  </div>
-  <div class="grid" id="conj"></div>
-</section>
-
-<section class="card">
-  <h2>All consonants</h2>
-  <div class="grid" id="all"></div>
-  <div class="note">The shirorekha is drawn only over consonants joined by a virama: one bar runs across a whole conjunct and stops mid-letter on the last consonant, and a dead consonant carries a bar over its whole width. Vowel signs sit above the bar. Letters that are still being drawn (for example ष) may appear blank.</div>
-</section>
-
-<footer>
-  Brahma · Brahmi (U+11000–U+1107F) · <a href="Brahma-Regular.ttf" download>Download TTF</a> · <a href="Brahma-Regular.woff2" download>Download WOFF2</a>
-</footer>
 </div>
-
 <script>
 (function(){
   var CONS="कखगघङचछजझञटठडढणतथदधनपफबभमयरलवशषसह";
@@ -124,107 +64,68 @@ a{color:var(--accent)}
   Array.from(CONS).forEach(function(c,i){map[c]=0x11013+i;});
   Array.from(VOW).forEach(function(c,i){map[c]=0x11005+i;});
   MAT.forEach(function(c,i){map[c]=MATCP[i];});
-  map["ँ"]=0x11000; map["ं"]=0x11001; map["ः"]=0x11002; map["्"]=0x11046;
-  var DROP={"़":1}; // nukta
+  map["ँ"]=0x11000;map["ं"]=0x11001;map["ः"]=0x11002;map["्"]=0x11046;
+  var DROP={"़":1};
+  function toBrahmi(s){var o="";Array.from(s).forEach(function(ch){if(DROP[ch])return;o+=map.hasOwnProperty(ch)?String.fromCodePoint(map[ch]):ch;});return o;}
 
-  function toBrahmi(s){
-    var o="";
-    Array.from(s).forEach(function(ch){
-      if(DROP[ch]) return;
-      if(map.hasOwnProperty(ch)) o+=String.fromCodePoint(map[ch]); else o+=ch;
-    });
-    return o;
+  var inp=document.getElementById("inp"),out=document.getElementById("out"),sizeEl=document.getElementById("size");
+  var mode="dev",size=44,text="";
+  var ctx=document.createElement("canvas").getContext("2d");
+
+  // Room a word needs above/below the normal line box, measured from the shaped text.
+  function room(word){
+    ctx.font=size+"px Brahma, 'Noto Sans Brahmi', serif";
+    var m=ctx.measureText(word);
+    var fa=m.fontBoundingBoxAscent, fd=m.fontBoundingBoxDescent;
+    if(fa==null){fa=size*0.9;fd=size*0.25;}
+    var a=m.actualBoundingBoxAscent, d=m.actualBoundingBoxDescent;
+    if(a==null){a=0;d=0;}
+    return {top:Math.max(0,Math.ceil(a-fa)),bottom:Math.max(0,Math.ceil(d-fd))};
   }
-  var B=function(cp){return String.fromCodePoint(cp);};
-  var VIR=B(0x11046);
-
-  var inp=document.getElementById("inp"), out=document.getElementById("out");
-  var mode="dev";
   function render(){
-    out.textContent = mode==="dev" ? toBrahmi(inp.value) : inp.value;
+    text = mode==="dev" ? toBrahmi(inp.value) : inp.value;
+    out.style.fontSize=size+"px";
+    out.textContent="";
+    text.split("\n").forEach(function(line){
+      var l=document.createElement("div");l.className="l";
+      line.split(/( +)/).forEach(function(part){
+        if(!part)return;
+        if(/^ +$/.test(part)){l.appendChild(document.createTextNode(part));return;}
+        var w=document.createElement("span");w.className="w";w.textContent=part;
+        var r=room(part);
+        if(r.top)w.style.marginTop=r.top+"px";
+        if(r.bottom)w.style.marginBottom=(r.bottom+2)+"px";
+        l.appendChild(w);
+      });
+      out.appendChild(l);
+    });
   }
   function setMode(m){
     mode=m;
     document.getElementById("m-dev").setAttribute("aria-pressed",m==="dev");
     document.getElementById("m-brh").setAttribute("aria-pressed",m==="brh");
-    inp.placeholder = m==="dev" ? "यहाँ देवनागरी में लिखें…  (for example: संस्कृत, कृष्ण, अस्त्र)" : "Paste or type Brahmi (U+11000 block) here";
-    inp.style.fontFamily = m==="dev" ? "" : "Brahma, 'Noto Sans Brahmi', 'Segoe UI Historic', serif";
+    inp.placeholder=m==="dev"?"देवनागरी…":"Brahmi…";
+    inp.style.fontFamily=m==="dev"?"":"Brahma,'Noto Sans Brahmi','Segoe UI Historic',serif";
     render();
   }
   document.getElementById("m-dev").onclick=function(){setMode("dev")};
   document.getElementById("m-brh").onclick=function(){setMode("brh")};
   inp.addEventListener("input",render);
-
-  document.getElementById("size").addEventListener("input",function(e){out.style.fontSize=e.target.value+"px";});
+  sizeEl.addEventListener("input",function(e){size=+e.target.value;render();});
   document.getElementById("clear").onclick=function(){inp.value="";render();inp.focus();};
   document.getElementById("copy").onclick=function(){
-    var t=out.textContent, b=this;
-    (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){b.textContent="Copied";setTimeout(function(){b.textContent="Copy Brahmi"},1200)},function(){
-      var r=document.createRange();r.selectNodeContents(out);var s=getSelection();s.removeAllRanges();s.addRange(r);
-    });
+    var b=this;(navigator.clipboard?navigator.clipboard.writeText(text):Promise.reject()).then(function(){b.textContent="Copied";setTimeout(function(){b.textContent="Copy"},1000)},function(){});
   };
 
-  // samples
-  var samples=["अस्त","कृष्ण","संस्कृत","धर्म","क्क","क्","अस्त्र","पत्र","विद्या","सर्वम्","ब्रह्म","स्वस्ति","राष्ट्र","श्रीमद्भगवद्गीता","क्षत्रिय","ज्ञान"];
-  var sm=document.getElementById("samples");
-  samples.forEach(function(s){
-    var b=document.createElement("button");b.className="chip";b.textContent=s;
-    b.onclick=function(){ setMode("dev"); inp.value=s; render(); };
-    sm.appendChild(b);
-  });
-
-  // Brahmi test set
-  var TESTS=["𑀓𑁆 𑀔𑁆 𑀕𑁆 𑀖𑁆 𑀗𑁆 𑀘𑁆 𑀙𑁆 𑀚𑁆 𑀛𑁆 𑀜𑁆 𑀝𑁆 𑀞𑁆 𑀟𑁆 𑀠𑁆 𑀡𑁆 𑀢𑁆 𑀣𑁆 𑀤𑁆 𑀥𑁆 𑀦𑁆 𑀧𑁆 𑀨𑁆 𑀩𑁆 𑀪𑁆 𑀫𑁆 𑀬𑁆 𑀭𑁆 𑀮𑁆 𑀯𑁆 𑀰𑁆 𑀲𑁆 𑀳𑁆","𑀓𑁆𑀓 𑀓𑁆𑀔 𑀓𑁆𑀕 𑀓𑁆𑀖 𑀓𑁆𑀗 𑀓𑁆𑀘 𑀓𑁆𑀙 𑀓𑁆𑀚 𑀔𑁆𑀓 𑀔𑁆𑀔 𑀔𑁆𑀕 𑀔𑁆𑀖 𑀔𑁆𑀗 𑀔𑁆𑀘 𑀔𑁆𑀙 𑀔𑁆𑀚 𑀕𑁆𑀓 𑀕𑁆𑀔 𑀕𑁆𑀕 𑀕𑁆𑀖 𑀕𑁆𑀗 𑀕𑁆𑀘 𑀕𑁆𑀙 𑀕𑁆𑀚 𑀖𑁆𑀓 𑀖𑁆𑀔 𑀖𑁆𑀕 𑀖𑁆𑀖 𑀖𑁆𑀗 𑀖𑁆𑀘 𑀖𑁆𑀙 𑀖𑁆𑀚 𑀗𑁆𑀓 𑀗𑁆𑀔 𑀗𑁆𑀕 𑀗𑁆𑀖 𑀗𑁆𑀗 𑀗𑁆𑀘 𑀗𑁆𑀙 𑀗𑁆𑀚 𑀘𑁆𑀓 𑀘𑁆𑀔 𑀘𑁆𑀕 𑀘𑁆𑀖 𑀘𑁆𑀗 𑀘𑁆𑀘 𑀘𑁆𑀙 𑀘𑁆𑀚 𑀙𑁆𑀓 𑀙𑁆𑀔 𑀙𑁆𑀕 𑀙𑁆𑀖 𑀙𑁆𑀗 𑀙𑁆𑀘 𑀙𑁆𑀙 𑀙𑁆𑀚 𑀚𑁆𑀓 𑀚𑁆𑀔 𑀚𑁆𑀕 𑀚𑁆𑀖 𑀚𑁆𑀗 𑀚𑁆𑀘 𑀚𑁆𑀙 𑀚𑁆𑀚","𑀓𑁆𑀖𑁆𑀙 𑀓𑁆𑀖𑁆𑀚 𑀓𑁆𑀖𑁆𑀛 𑀓𑁆𑀗𑁆𑀙 𑀓𑁆𑀗𑁆𑀚 𑀓𑁆𑀗𑁆𑀛 𑀓𑁆𑀘𑁆𑀙 𑀓𑁆𑀘𑁆𑀚 𑀓𑁆𑀘𑁆𑀛 𑀓𑁆𑀙𑁆𑀙 𑀓𑁆𑀙𑁆𑀚 𑀓𑁆𑀙𑁆𑀛 𑀓𑁆𑀚𑁆𑀙 𑀓𑁆𑀚𑁆𑀚 𑀓𑁆𑀚𑁆𑀛 𑀓𑁆𑀛𑁆𑀙 𑀓𑁆𑀛𑁆𑀚 𑀓𑁆𑀛𑁆𑀛 𑀔𑁆𑀖𑁆𑀙 𑀔𑁆𑀖𑁆𑀚 𑀔𑁆𑀖𑁆𑀛 𑀔𑁆𑀗𑁆𑀙 𑀔𑁆𑀗𑁆𑀚 𑀔𑁆𑀗𑁆𑀛 𑀔𑁆𑀘𑁆𑀙 𑀔𑁆𑀘𑁆𑀚 𑀔𑁆𑀘𑁆𑀛 𑀔𑁆𑀙𑁆𑀙 𑀔𑁆𑀙𑁆𑀚 𑀔𑁆𑀙𑁆𑀛 𑀔𑁆𑀚𑁆𑀙 𑀔𑁆𑀚𑁆𑀚 𑀔𑁆𑀚𑁆𑀛 𑀔𑁆𑀛𑁆𑀙 𑀔𑁆𑀛𑁆𑀚 𑀔𑁆𑀛𑁆𑀛 𑀕𑁆𑀖𑁆𑀙 𑀕𑁆𑀖𑁆𑀚 𑀕𑁆𑀖𑁆𑀛 𑀕𑁆𑀗𑁆𑀙 𑀕𑁆𑀗𑁆𑀚 𑀕𑁆𑀗𑁆𑀛 𑀕𑁆𑀘𑁆𑀙 𑀕𑁆𑀘𑁆𑀚 𑀕𑁆𑀘𑁆𑀛 𑀕𑁆𑀙𑁆𑀙 𑀕𑁆𑀙𑁆𑀚 𑀕𑁆𑀙𑁆𑀛 𑀕𑁆𑀚𑁆𑀙 𑀕𑁆𑀚𑁆𑀚 𑀕𑁆𑀚𑁆𑀛 𑀕𑁆𑀛𑁆𑀙 𑀕𑁆𑀛𑁆𑀚 𑀕𑁆𑀛𑁆𑀛 𑀖𑁆𑀖𑁆𑀙 𑀖𑁆𑀖𑁆𑀚 𑀖𑁆𑀖𑁆𑀛 𑀖𑁆𑀗𑁆𑀙 𑀖𑁆𑀗𑁆𑀚 𑀖𑁆𑀗𑁆𑀛 𑀖𑁆𑀘𑁆𑀙 𑀖𑁆𑀘𑁆𑀚 𑀖𑁆𑀘𑁆𑀛 𑀖𑁆𑀙𑁆𑀙 𑀖𑁆𑀙𑁆𑀚 𑀖𑁆𑀙𑁆𑀛 𑀖𑁆𑀚𑁆𑀙 𑀖𑁆𑀚𑁆𑀚 𑀖𑁆𑀚𑁆𑀛 𑀖𑁆𑀛𑁆𑀙 𑀖𑁆𑀛𑁆𑀚 𑀖𑁆𑀛𑁆𑀛 𑀗𑁆𑀖𑁆𑀙 𑀗𑁆𑀖𑁆𑀚 𑀗𑁆𑀖𑁆𑀛 𑀗𑁆𑀗𑁆𑀙 𑀗𑁆𑀗𑁆𑀚 𑀗𑁆𑀗𑁆𑀛 𑀗𑁆𑀘𑁆𑀙 𑀗𑁆𑀘𑁆𑀚 𑀗𑁆𑀘𑁆𑀛 𑀗𑁆𑀙𑁆𑀙 𑀗𑁆𑀙𑁆𑀚 𑀗𑁆𑀙𑁆𑀛 𑀗𑁆𑀚𑁆𑀙 𑀗𑁆𑀚𑁆𑀚 𑀗𑁆𑀚𑁆𑀛 𑀗𑁆𑀛𑁆𑀙 𑀗𑁆𑀛𑁆𑀚 𑀗𑁆𑀛𑁆𑀛 𑀘𑁆𑀖𑁆𑀙 𑀘𑁆𑀖𑁆𑀚 𑀘𑁆𑀖𑁆𑀛 𑀘𑁆𑀗𑁆𑀙 𑀘𑁆𑀗𑁆𑀚 𑀘𑁆𑀗𑁆𑀛 𑀘𑁆𑀘𑁆𑀙 𑀘𑁆𑀘𑁆𑀚 𑀘𑁆𑀘𑁆𑀛 𑀘𑁆𑀙𑁆𑀙 𑀘𑁆𑀙𑁆𑀚 𑀘𑁆𑀙𑁆𑀛 𑀘𑁆𑀚𑁆𑀙 𑀘𑁆𑀚𑁆𑀚 𑀘𑁆𑀚𑁆𑀛 𑀘𑁆𑀛𑁆𑀙 𑀘𑁆𑀛𑁆𑀚 𑀘𑁆𑀛𑁆𑀛","𑀓𑀸 𑀓𑀺 𑀓𑀻 𑀓𑀼 𑀓𑀽 𑀓𑁂 𑀓𑁃 𑀓𑁄 𑀓𑁅 𑀔𑀸 𑀔𑀺 𑀔𑀻 𑀔𑀼 𑀔𑀽 𑀔𑁂 𑀔𑁃 𑀔𑁄 𑀔𑁅 𑀕𑀸 𑀕𑀺 𑀕𑀻 𑀕𑀼 𑀕𑀽 𑀕𑁂 𑀕𑁃 𑀕𑁄 𑀕𑁅 𑀖𑀸 𑀖𑀺 𑀖𑀻 𑀖𑀼 𑀖𑀽 𑀖𑁂 𑀖𑁃 𑀖𑁄 𑀖𑁅 𑀗𑀸 𑀗𑀺 𑀗𑀻 𑀗𑀼 𑀗𑀽 𑀗𑁂 𑀗𑁃 𑀗𑁄 𑀗𑁅 𑀘𑀸 𑀘𑀺 𑀘𑀻 𑀘𑀼 𑀘𑀽 𑀘𑁂 𑀘𑁃 𑀘𑁄 𑀘𑁅 𑀙𑀸 𑀙𑀺 𑀙𑀻 𑀙𑀼 𑀙𑀽 𑀙𑁂 𑀙𑁃 𑀙𑁄 𑀙𑁅 𑀚𑀸 𑀚𑀺 𑀚𑀻 𑀚𑀼 𑀚𑀽 𑀚𑁂 𑀚𑁃 𑀚𑁄 𑀚𑁅 𑀛𑀸 𑀛𑀺 𑀛𑀻 𑀛𑀼 𑀛𑀽 𑀛𑁂 𑀛𑁃 𑀛𑁄 𑀛𑁅 𑀜𑀸 𑀜𑀺 𑀜𑀻 𑀜𑀼 𑀜𑀽 𑀜𑁂 𑀜𑁃 𑀜𑁄 𑀜𑁅 𑀝𑀸 𑀝𑀺 𑀝𑀻 𑀝𑀼 𑀝𑀽 𑀝𑁂 𑀝𑁃 𑀝𑁄 𑀝𑁅 𑀞𑀸 𑀞𑀺 𑀞𑀻 𑀞𑀼 𑀞𑀽 𑀞𑁂 𑀞𑁃 𑀞𑁄 𑀞𑁅 𑀟𑀸 𑀟𑀺 𑀟𑀻 𑀟𑀼 𑀟𑀽 𑀟𑁂 𑀟𑁃 𑀟𑁄 𑀟𑁅 𑀠𑀸 𑀠𑀺 𑀠𑀻 𑀠𑀼 𑀠𑀽 𑀠𑁂 𑀠𑁃 𑀠𑁄 𑀠𑁅 𑀡𑀸 𑀡𑀺 𑀡𑀻 𑀡𑀼 𑀡𑀽 𑀡𑁂 𑀡𑁃 𑀡𑁄 𑀡𑁅 𑀢𑀸 𑀢𑀺 𑀢𑀻 𑀢𑀼 𑀢𑀽 𑀢𑁂 𑀢𑁃 𑀢𑁄 𑀢𑁅 𑀣𑀸 𑀣𑀺 𑀣𑀻 𑀣𑀼 𑀣𑀽 𑀣𑁂 𑀣𑁃 𑀣𑁄 𑀣𑁅 𑀤𑀸 𑀤𑀺 𑀤𑀻 𑀤𑀼 𑀤𑀽 𑀤𑁂 𑀤𑁃 𑀤𑁄 𑀤𑁅 𑀥𑀸 𑀥𑀺 𑀥𑀻 𑀥𑀼 𑀥𑀽 𑀥𑁂 𑀥𑁃 𑀥𑁄 𑀥𑁅 𑀦𑀸 𑀦𑀺 𑀦𑀻 𑀦𑀼 𑀦𑀽 𑀦𑁂 𑀦𑁃 𑀦𑁄 𑀦𑁅 𑀧𑀸 𑀧𑀺 𑀧𑀻 𑀧𑀼 𑀧𑀽 𑀧𑁂 𑀧𑁃 𑀧𑁄 𑀧𑁅 𑀨𑀸 𑀨𑀺 𑀨𑀻 𑀨𑀼 𑀨𑀽 𑀨𑁂 𑀨𑁃 𑀨𑁄 𑀨𑁅 𑀩𑀸 𑀩𑀺 𑀩𑀻 𑀩𑀼 𑀩𑀽 𑀩𑁂 𑀩𑁃 𑀩𑁄 𑀩𑁅 𑀪𑀸 𑀪𑀺 𑀪𑀻 𑀪𑀼 𑀪𑀽 𑀪𑁂 𑀪𑁃 𑀪𑁄 𑀪𑁅 𑀫𑀸 𑀫𑀺 𑀫𑀻 𑀫𑀼 𑀫𑀽 𑀫𑁂 𑀫𑁃 𑀫𑁄 𑀫𑁅 𑀬𑀸 𑀬𑀺 𑀬𑀻 𑀬𑀼 𑀬𑀽 𑀬𑁂 𑀬𑁃 𑀬𑁄 𑀬𑁅 𑀭𑀸 𑀭𑀺 𑀭𑀻 𑀭𑀼 𑀭𑀽 𑀭𑁂 𑀭𑁃 𑀭𑁄 𑀭𑁅 𑀮𑀸 𑀮𑀺 𑀮𑀻 𑀮𑀼 𑀮𑀽 𑀮𑁂 𑀮𑁃 𑀮𑁄 𑀮𑁅 𑀯𑀸 𑀯𑀺 𑀯𑀻 𑀯𑀼 𑀯𑀽 𑀯𑁂 𑀯𑁃 𑀯𑁄 𑀯𑁅 𑀰𑀸 𑀰𑀺 𑀰𑀻 𑀰𑀼 𑀰𑀽 𑀰𑁂 𑀰𑁃 𑀰𑁄 𑀰𑁅 𑀲𑀸 𑀲𑀺 𑀲𑀻 𑀲𑀼 𑀲𑀽 𑀲𑁂 𑀲𑁃 𑀲𑁄 𑀲𑁅 𑀳𑀸 𑀳𑀺 𑀳𑀻 𑀳𑀼 𑀳𑀽 𑀳𑁂 𑀳𑁃 𑀳𑁄 𑀳𑁅","𑀓𑁆𑀝𑀸 𑀓𑁆𑀝𑀺 𑀓𑁆𑀝𑀻 𑀓𑁆𑀞𑀸 𑀓𑁆𑀞𑀺 𑀓𑁆𑀞𑀻 𑀓𑁆𑀟𑀸 𑀓𑁆𑀟𑀺 𑀓𑁆𑀟𑀻 𑀓𑁆𑀠𑀸 𑀓𑁆𑀠𑀺 𑀓𑁆𑀠𑀻 𑀔𑁆𑀝𑀸 𑀔𑁆𑀝𑀺 𑀔𑁆𑀝𑀻 𑀔𑁆𑀞𑀸 𑀔𑁆𑀞𑀺 𑀔𑁆𑀞𑀻 𑀔𑁆𑀟𑀸 𑀔𑁆𑀟𑀺 𑀔𑁆𑀟𑀻 𑀔𑁆𑀠𑀸 𑀔𑁆𑀠𑀺 𑀔𑁆𑀠𑀻 𑀕𑁆𑀝𑀸 𑀕𑁆𑀝𑀺 𑀕𑁆𑀝𑀻 𑀕𑁆𑀞𑀸 𑀕𑁆𑀞𑀺 𑀕𑁆𑀞𑀻 𑀕𑁆𑀟𑀸 𑀕𑁆𑀟𑀺 𑀕𑁆𑀟𑀻 𑀕𑁆𑀠𑀸 𑀕𑁆𑀠𑀺 𑀕𑁆𑀠𑀻 𑀖𑁆𑀝𑀸 𑀖𑁆𑀝𑀺 𑀖𑁆𑀝𑀻 𑀖𑁆𑀞𑀸 𑀖𑁆𑀞𑀺 𑀖𑁆𑀞𑀻 𑀖𑁆𑀟𑀸 𑀖𑁆𑀟𑀺 𑀖𑁆𑀟𑀻 𑀖𑁆𑀠𑀸 𑀖𑁆𑀠𑀺 𑀖𑁆𑀠𑀻 𑀗𑁆𑀝𑀸 𑀗𑁆𑀝𑀺 𑀗𑁆𑀝𑀻 𑀗𑁆𑀞𑀸 𑀗𑁆𑀞𑀺 𑀗𑁆𑀞𑀻 𑀗𑁆𑀟𑀸 𑀗𑁆𑀟𑀺 𑀗𑁆𑀟𑀻 𑀗𑁆𑀠𑀸 𑀗𑁆𑀠𑀺 𑀗𑁆𑀠𑀻 𑀘𑁆𑀝𑀸 𑀘𑁆𑀝𑀺 𑀘𑁆𑀝𑀻 𑀘𑁆𑀞𑀸 𑀘𑁆𑀞𑀺 𑀘𑁆𑀞𑀻 𑀘𑁆𑀟𑀸 𑀘𑁆𑀟𑀺 𑀘𑁆𑀟𑀻 𑀘𑁆𑀠𑀸 𑀘𑁆𑀠𑀺 𑀘𑁆𑀠𑀻 𑀙𑁆𑀝𑀸 𑀙𑁆𑀝𑀺 𑀙𑁆𑀝𑀻 𑀙𑁆𑀞𑀸 𑀙𑁆𑀞𑀺 𑀙𑁆𑀞𑀻 𑀙𑁆𑀟𑀸 𑀙𑁆𑀟𑀺 𑀙𑁆𑀟𑀻 𑀙𑁆𑀠𑀸 𑀙𑁆𑀠𑀺 𑀙𑁆𑀠𑀻 𑀚𑁆𑀝𑀸 𑀚𑁆𑀝𑀺 𑀚𑁆𑀝𑀻 𑀚𑁆𑀞𑀸 𑀚𑁆𑀞𑀺 𑀚𑁆𑀞𑀻 𑀚𑁆𑀟𑀸 𑀚𑁆𑀟𑀺 𑀚𑁆𑀟𑀻 𑀚𑁆𑀠𑀸 𑀚𑁆𑀠𑀺 𑀚𑁆𑀠𑀻 𑀛𑁆𑀝𑀸 𑀛𑁆𑀝𑀺 𑀛𑁆𑀝𑀻 𑀛𑁆𑀞𑀸 𑀛𑁆𑀞𑀺 𑀛𑁆𑀞𑀻 𑀛𑁆𑀟𑀸 𑀛𑁆𑀟𑀺 𑀛𑁆𑀟𑀻 𑀛𑁆𑀠𑀸 𑀛𑁆𑀠𑀺 𑀛𑁆𑀠𑀻 𑀜𑁆𑀝𑀸 𑀜𑁆𑀝𑀺 𑀜𑁆𑀝𑀻 𑀜𑁆𑀞𑀸 𑀜𑁆𑀞𑀺 𑀜𑁆𑀞𑀻 𑀜𑁆𑀟𑀸 𑀜𑁆𑀟𑀺 𑀜𑁆𑀟𑀻 𑀜𑁆𑀠𑀸 𑀜𑁆𑀠𑀺 𑀜𑁆𑀠𑀻","𑀯𑁆𑀟𑁆𑀞𑁆𑀲𑀯𑁆𑀕𑁄𑀓𑁆𑀗𑁆","𑀔𑁆𑀰𑁆𑀡𑁆𑀥","𑀭𑁆𑀘𑁆𑀣𑁆𑀥𑁆𑀔𑁆𑀬𑁆𑀫𑁆𑀗𑁆𑀔𑀼","𑀫𑁆𑀬𑁆𑀭𑁆𑀗𑀽","𑀦𑁆𑀚𑁆𑀛𑁆𑀢𑁆𑀙𑁆𑀳𑁆𑀞𑁆𑀟𑁆𑀯","𑀫𑁆𑀚𑁆𑀬𑁆𑀭𑀽𑀠𑁆","𑀜𑁆","𑀨𑀺𑀠𑁂𑀰𑁆𑀛𑁆𑀲𑁃","𑀦𑁆𑀡𑀼𑀟𑁆𑀫","𑀙𑁆𑀢𑁆𑀬𑁆𑀣𑀥𑁆𑀞𑁆𑀗𑁆𑀛𑁆𑀤𑁆","𑀗𑁆𑀢𑁆𑀖𑁆𑀕𑁆𑀞𑁆","𑀪𑁆𑀨𑁆𑀛𑁆𑀕𑁆𑀔𑀽","𑀗","𑀗𑁆𑀗𑀸𑀨𑁆𑀩𑁆𑀗𑁆𑀭𑁆𑀔𑁆𑀳","𑀓𑁆𑀗𑁆𑀘𑁆𑀘𑀨𑁆𑀫𑁆𑀰𑁆𑀯𑀦𑀼𑀳","𑀓𑁆𑀪𑁆𑀦𑁆𑀝𑁆𑀨𑀼𑀬𑁆𑀣𑁆𑀟𑀠𑁆𑀫𑁆","𑀛𑁆𑀛𑀗𑀻𑀯","𑀳𑁆𑀧𑁆𑀯𑁆𑀧𑁆𑀤𑀽𑀦𑁆𑀔𑁆𑀛𑀽𑀜𑁆𑀖𑀺","𑀟𑁆𑀣𑁆𑀞𑁆𑀓𑁆𑀲𑀼𑀩𑁆𑀝𑁆𑀬","𑀭𑀯𑁆𑀰𑁆","𑀨𑁆𑀰𑁆𑀧𑁆𑀠𑁆","𑀢𑁆𑀫","𑀔𑁆𑀩𑁆𑀘𑁆𑀭𑁆𑀤𑁆𑀳𑀺𑀕𑁆𑀞𑁆𑀨𑁆𑀛","𑀘𑁆𑀡𑁆𑀯𑁆𑀥𑀣𑁆𑀦𑀦𑁆𑀜𑀟𑁆𑀭𑁆𑀚𑁆𑀓𑀸","𑀳𑁆𑀗𑁆𑀰𑀤𑁆𑀢𑁆𑀲𑁆𑀳𑁆𑀲𑁆𑀧𑁆𑀙𑁆𑀟𑀽","𑀕𑁆𑀓𑁆𑀥𑁆","𑀳𑁆𑀙𑀟𑁆𑀮𑁆𑀔𑁆𑀝𑁆𑀠𑁆𑀠𑁆𑀠","𑀩𑁆𑀞𑁆𑀟𑁆𑀠𑁆𑀟𑀼","𑀣𑁆𑀭𑁆𑀛𑁆𑀟𑁆𑀬","𑀩𑁆𑀪𑁆","𑀗𑁆𑀲𑁆𑀲𑁆𑀚𑁆𑀠𑁆","𑀙𑁆𑀖𑁆𑀛𑀺𑀬𑁆𑀰𑁆𑀮𑁂","𑀟𑁆","𑀪𑁆𑀬𑁆𑀟𑀸𑀘𑁆𑀬𑁆𑀟𑀤𑁆𑀚𑁆𑀝𑁂𑀮𑁆𑀞𑁆𑀬𑁆","𑀨𑁆𑀓","𑀤𑁆𑀦𑁆","𑀗𑁆𑀫𑀼𑀬𑀺𑀣𑁆𑀯𑀼𑀓𑁆𑀙𑁆𑀣𑁆𑀣𑁆","𑀙𑁆𑀯𑁆𑀗𑁆𑀕𑁆𑀫𑁆𑀲𑀮𑁅","𑀪𑁆𑀥𑁆𑀲𑀥𑁆𑀔𑁆𑀓𑀭𑁆𑀫𑁆𑀬𑁆𑀖𑁆𑀧𑁆","𑀲𑁆𑀣𑁆𑀢𑁆𑀕𑀜𑁆𑀢𑁆𑀚𑁆𑀖𑀼","𑀜𑁆𑀚𑁆𑀪","𑀭𑁆𑀪𑁆𑀛𑀲𑁆𑀚𑁅𑀤𑁆𑀤𑁆𑀟𑀢𑁆𑀟𑀸","𑀣𑁆𑀮𑁆𑀔𑁅","𑀘𑀼𑀲𑁆𑀲𑁆𑀩𑁆𑀳𑁆𑀛𑁆𑀗𑀼","𑀣𑁆𑀫𑁆𑀜𑁆𑀪𑁆𑀥𑁆𑀞𑁆𑀮𑀧𑁆𑀘𑁆𑀘𑁆𑀮𑁄𑀓𑁆𑀗𑁆𑀦𑁆","𑀳𑁆𑀧𑁆𑀥𑁂","𑀧𑀯𑁆𑀦𑁆𑀰𑁆𑀢𑁆𑀘𑁆𑀪𑁆𑀪𑁆","𑀟𑁆𑀪𑁆𑀫𑁆𑀜𑀘𑁆𑀰𑀸𑀖𑁆𑀝𑀗𑁆𑀦𑁆𑀘𑁆𑀨𑁆","𑀘𑁆𑀔𑁆𑀜𑁆","𑀡𑁆𑀳𑀬𑁆𑀩𑁆𑀨𑁆𑀨𑁅𑀕𑀓𑁆𑀫𑁆𑀘","𑀓𑁆𑀚𑁆𑀭","𑀫𑁆𑀝𑁆𑀮𑁆𑀥𑁆𑀤𑁆𑀖","𑀞𑁆𑀖𑁄𑀧𑁆𑀩𑁆𑀠","𑀯𑁆𑀞𑀽𑀣𑁆𑀳𑁆𑀬𑁆𑀨𑀲𑀼𑀫𑁆𑀤𑀼","𑀪𑁆𑀯𑁆𑀢𑁆𑀭𑀻","𑀣𑁆𑀛𑀖𑁆𑀜𑁆𑀞𑁆𑀛𑁆𑀘𑁆","𑀰𑁆𑀘𑁆𑀦𑁆𑀔𑀺","𑀕𑁆𑀭𑀽𑀦𑁆𑀬𑁆𑀗𑀪𑁆𑀙𑁆𑀬","𑀓𑁆𑀫𑁆𑀲𑁆𑀢𑁆","𑀓𑁆𑀠𑁆𑀜𑁆𑀥"];
-  var tt=document.getElementById("tests");
-  function loadTest(i){ setMode("brh"); inp.value = i<0 ? TESTS.join("\n") : TESTS[i]; render(); }
-  var ab=document.createElement("button");ab.className="chip";ab.textContent="All";ab.onclick=function(){loadTest(-1)};tt.appendChild(ab);
-  TESTS.forEach(function(_,i){var b=document.createElement("button");b.className="chip";b.textContent=String(i+1);b.onclick=function(){loadTest(i)};tt.appendChild(b);});
-  loadTest(-1);
-
-  // keyboard
-  var kb=document.getElementById("kb");
-  function addKey(label,val,wide){
-    var b=document.createElement("button");b.className="key"+(wide?" wide":"");b.textContent=label;
-    b.onclick=function(){
-      if(mode!=="dev") setMode("dev");
-      var st=inp.selectionStart,en=inp.selectionEnd;
-      inp.value=inp.value.slice(0,st)+val+inp.value.slice(en);
-      inp.focus(); inp.selectionStart=inp.selectionEnd=st+val.length; render();
-    };
-    kb.appendChild(b);
-  }
-  Array.from(VOW).forEach(function(c){addKey(c,c)});
-  MAT.forEach(function(c){addKey("क"+c,c)});
-  ["ं","ः","ँ"].forEach(function(c){addKey("क"+c,c)});
-  addKey("क्","्");
-  Array.from(CONS).forEach(function(c){addKey(c,c)});
-  addKey("space"," ",true);
-  var back=document.createElement("button");back.className="key wide";back.textContent="⌫";
-  back.onclick=function(){var a=Array.from(inp.value);a.pop();inp.value=a.join("");render();inp.focus();};
-  kb.appendChild(back);
-
-  // conjunct explorer
-  var sel=document.getElementById("first"), conj=document.getElementById("conj");
-  Array.from(CONS).forEach(function(c){var o=document.createElement("option");o.value=c;o.textContent=c+"  ("+toBrahmi(c)+")";sel.appendChild(o);});
+  var sel=document.getElementById("first"),conj=document.getElementById("conj");
+  Array.from(CONS).forEach(function(c){var o=document.createElement("option");o.value=c;o.textContent=c+"  "+toBrahmi(c);sel.appendChild(o);});
   sel.value="स";
-  function cell(brahmi,dev){
-    var d=document.createElement("div");d.className="cell";
-    var b=document.createElement("div");b.className="b";b.textContent=brahmi;
-    var t=document.createElement("div");t.className="d";t.textContent=dev;
-    d.appendChild(b);d.appendChild(t);return d;
-  }
-  function drawConj(){
-    conj.textContent="";
-    var f=sel.value;
-    conj.appendChild(cell(toBrahmi(f+"्"),f+"्"));
-    Array.from(CONS).forEach(function(c){conj.appendChild(cell(toBrahmi(f+"्"+c),f+"्"+c));});
-  }
-  sel.onchange=drawConj; drawConj();
-
-  var all=document.getElementById("all");
-  Array.from(CONS).forEach(function(c){all.appendChild(cell(toBrahmi(c),c));});
+  function cell(b,d){var x=document.createElement("div");x.className="cell";var a=document.createElement("div");a.className="b";a.textContent=b;var t=document.createElement("div");t.className="d";t.textContent=d;x.appendChild(a);x.appendChild(t);return x;}
+  function drawConj(){conj.textContent="";var f=sel.value;conj.appendChild(cell(toBrahmi(f+"्"),f+"्"));Array.from(CONS).forEach(function(c){conj.appendChild(cell(toBrahmi(f+"्"+c),f+"्"+c));});}
+  sel.onchange=drawConj;drawConj();
 
   render();
+  if(document.fonts&&document.fonts.load){document.fonts.load("44px Brahma").then(render);document.fonts.ready.then(render);}
 })();
 </script>
 </body>
